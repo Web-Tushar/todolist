@@ -3,23 +3,25 @@ let addbtn = document.querySelector(".addbtn");
 let error = document.querySelector(".error");
 let main = document.querySelector(".main");
 
-let storetodo = [];
+let storetodo = []
 let todoindex 
 
 
 addbtn.addEventListener("click",function(){
-     if(inputbox.value !== "" && addbtn.innerHTML == "Add"){
-          error.innerHTML = ""
+     if(inputbox.value !== "" && addbtn.innerHTML == "Add") {
           storetodo.push(inputbox.value)
+          error.innerHTML = ""
           inputbox.value = ""
           todo()  
 
      }
-     else if(inputbox.value !== "" && addbtn.innerHTML == "Update"){
+     else if(inputbox.value !== "" && addbtn.innerHTML == "Update") {
           storetodo[todoindex] = inputbox.value
-          inputbox.value = ""
           addbtn.innerHTML = "Add"
+          inputbox.value = ""
+          error.innerHTML = ""
           todo() 
+
 
      }
 
@@ -30,7 +32,7 @@ addbtn.addEventListener("click",function(){
 
 function todo(){
      main.innerHTML = ""
-     storetodo.map((item,index)=>{
+     storetodo.map((item,_index)=>{
           
           main.innerHTML += `<li>${item}  <button class="deletebtn">delete</button> <button class="editbtn">Edit</button></li>`
 
@@ -39,17 +41,18 @@ function todo(){
      let editbtnarry = Array.from(editbtn);
      editbtnarry.map((edititem,editindex)=>{
           edititem.addEventListener("click",function(){
-               addbtn.innerHTML = "update"
+               addbtn.innerHTML = "Update"
           inputbox.value = storetodo[editindex]
-          todoindex = todoindex
+          todoindex = editindex
+          error.innerHTML = ""
 
                // console.log(edititem,editindex);
           })
      })
-     let deletebtn = querySelectorAll(".deletebtn")
-     let deletebtnArr = Arry.from("deletebtn")
+     let deletebtn = document.querySelectorAll(".deletebtn")
+     let deletebtnArr = Array.from(deletebtn)
      deletebtnArr.map((deleteitem,deleteindex)=>{
-          deleteitem.addEventListener("click",function(){
+          deleteitem.addEventListener("click",function() {
                storetodo.splice(deleteindex,1)
                todo()
           })
