@@ -76,3 +76,20 @@ justify-content: space-between;
      list-style-type:decimal;
 
 }
+
+#btn{
+     background-color: transparent;
+     outline: none;
+     border: none;
+     cursor: pointer;
+     padding: 5px;
+     border-radius: 4px;
+     transition: all linear .2s;
+     text-transform: capitalize;
+
+}
+
+#btn:hover{
+     background-color: #fff;
+
+}
